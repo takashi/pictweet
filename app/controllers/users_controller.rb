@@ -1,12 +1,9 @@
 class UsersController < ApplicationController
 
   def show
-    user = User.find(show_params[:id])
-    @nickname = user.nickname
-    @tweets = user.tweets.page(params[:page]).per(5).order('created_at DESC')
-    # user = User.find(show_params[:id])
-    # @nickname = user.nickname
-    # @tweets = Tweet.where(user_id: user.id).page(params[:page]).per(5).order('created_at DESC')
+    @nickname = current_user.nickname
+    @tweets = current_user.tweets.page(params[:page]).per(5).order('created_at DESC')
+    @tweets_count = current_user.count_tweets #こちらの行を追加
   end
 
   private

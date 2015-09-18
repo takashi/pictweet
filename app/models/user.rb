@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   # validation
   validates_uniqueness_of :nickname
   validates_presence_of :nickname
+
+  def count_tweets
+    tweets.count
+  end
 end

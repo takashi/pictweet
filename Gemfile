@@ -39,8 +39,13 @@ gem 'kaminari'
 # Use unicorn as the app server
 gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+group :development, :test do
+  gem "rspec-rails", "~> 3.1.0"
+  gem 'factory_girl_rails'
+  gem 'factory_girl', github: 'thoughtbot/factory_girl'
+end
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+group :test do
+  gem 'ffaker'
+  gem 'database_cleaner', '~> 1.3.0'
+end
